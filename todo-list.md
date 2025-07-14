@@ -9,10 +9,10 @@
 
 -liste_objets.php
     *Affichage en grille/carte
-    *Systeme de pagination
     *Indication claire du statut (disponible/emprunte)
     *Bouton d'emprunt si disponible
 
 -Filtres.php
     *Menu deroulant pour les categories
 
+-upload.php
