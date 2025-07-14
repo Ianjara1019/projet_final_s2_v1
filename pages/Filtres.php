@@ -1,11 +1,22 @@
 <?php 
     include('../inc/function.php');
 
-    $db = dbconnect(); 
-    
-    $lo = liste_objet();
+    $db = dbconnect();
 
-    $categorie = mysqli_query($db, "SELECT * FROM categorie_object");
+    $id_categorie = $_GET['id_cat'];
+
+    if (!$db) {
+        die("Database connection failed: " . mysqli_connect_error());
+    }
+
+    $lo = filtre_categorie($id_categorie);
+
+    $categorie_query = "SELECT * FROM categorie_object";
+    $categorie = mysqli_query($db, $categorie_query);
+
+    if (!$categorie) {
+        die("Error fetching categories: " . mysqli_error($db));
+    }
 ?>
 
 <!DOCTYPE html>
@@ -21,6 +32,7 @@
 </head>
 <body>
     <div class="container mt-4">
+        <!-- Dropdown for categories -->
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Toutes catégories

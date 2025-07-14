@@ -15,5 +15,4 @@
 
 -Filtres.php
     *Menu deroulant pour les categories
-    *Possibilite de selection multiple
 

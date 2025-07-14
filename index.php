@@ -20,9 +20,9 @@ mysqli_set_charset(dbconnect(), 'utf8');
             <input type="text" name="nom" placeholder="Entrer Nom" >
             <input type="email" name="email" placeholder="Entrer Email" >
             <input type="password" name="mdp" placeholder="Entrer Mot de passe" >
-            <input type="date" name="date_naissance" >
-            <input type="text" name="genre">
-            <input type="text" name="ville">
+            <input type="date" name="date_naissance" placeholder="Date de naissance">
+            <input type="text" name="genre" placeholder="Genre">
+            <input type="text" name="ville" placeholder="Ville">
             <input type="submit" value="S'inscrire">
         </form>
 

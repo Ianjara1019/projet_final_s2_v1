@@ -2,7 +2,7 @@
 function dbconnect() {
     static $connect = null;
     if ($connect === null) {
-        $connect = mysqli_connect('localhost', 'root', '', 'objet');
+        $connect = mysqli_connect('localhost', '172.60.0.11', 'MdrYaEQX', 'db_s2_ETU004011');
         if (!$connect) {
             die("Erreur de connexion à la base de données : " . mysqli_connect_error());
         }
@@ -29,22 +29,5 @@ function liste_objet(){
 function filtre_categorie($id_categorie){
     return $sql = mysqli_query(dbconnect(),"SELECT * from v_liste_objet where id_categorie = $id_categorie ");
 }
-
-// function getMembre($idMembre){
-//     $conn = dbconnect();
-//     $sqlMembres = "SELECT id_membre, nom, email FROM membre WHERE id_membre != '$idMembre'";
-//     $result = mysqli_query($conn, $sqlMembres);
-//     return $result;
-// }
-
-// function getTableAmis($idMembre, $idmembres = [] ) {
-//     $conn = dbconnect();
-//     $sql = "SELECT * from amis 
-//             Where idMembre1 = '$idMembre' and idMembre2 = '$idmembres' and DateHeureAcceptation != null
-//             UNION SELECT idMembre2,idMembre1,DateHeureDemande,DateHeureAcceptation from amis 
-//             where idMembre2 = '$idMembre' and idMembre1 = '$idmembres' and DateHeureAcceptation != null";
-//     $result = mysqli_query($conn, $sql);
-//     return $result;
-// }
 
 ?>
