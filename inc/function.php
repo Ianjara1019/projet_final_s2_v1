@@ -1,6 +1,6 @@
 <?php
 function dbconnect() {
-    $connect = mysqli_connect('localhost', 'root', '', 'objet');
+    $connect = mysqli_connect('172.60.0.11', 'ETU004011', 'MdrYaEQX', 'db_s2_ETU004011');
     if (!$connect) {
         die("Erreur de connexion : " . mysqli_connect_error());
     }
