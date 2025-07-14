@@ -22,6 +22,10 @@ function insert($nom, $email, $mdp, $naissance, $genre, $ville) {
     }
 }
 
+function liste_objet(){
+    return $sql = mysqli_query(dbconnect(),"SELECT * from v_liste_objet where date_retour is not null"); 
+}
+
 // function getMembre($idMembre){
 //     $conn = dbconnect();
 //     $sqlMembres = "SELECT id_membre, nom, email FROM membre WHERE id_membre != '$idMembre'";

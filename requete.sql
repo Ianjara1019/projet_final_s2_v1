@@ -113,3 +113,6 @@ INSERT INTO emprunt (id_object, id_membre, date_emprunt, date_retour) VALUES
 (38, 3, '2023-08-15', NULL),
 (7, 4, '2023-09-10', '2023-09-20'),
 (15, 2, '2023-10-05', '2023-10-15');
+
+CREATE or replace view v_liste_objet as
+SELECT o.*, e.date_retour from objet as o JOIN emprunt as e on o.id_object = e.id_object;

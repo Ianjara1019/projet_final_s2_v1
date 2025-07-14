@@ -11,6 +11,7 @@ if (isset($_GET['error'])) {
     <meta charset="utf-8">
     <title>Connexion</title>
     <link rel="stylesheet" href="../assets/CSS/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <body>

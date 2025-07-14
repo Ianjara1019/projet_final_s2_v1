@@ -10,13 +10,13 @@ mysqli_set_charset(dbconnect(), 'utf8');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
-    <link rel="stylesheet" href="./assets/CSS/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
     <div class="container">
         <h2>Inscription</h2>
-        <form action="inc/traitement.php" method="get">
+        <form action="pages/traitement.php" method="get">
             <input type="text" name="nom" placeholder="Entrer Nom" >
             <input type="email" name="email" placeholder="Entrer Email" >
             <input type="password" name="mdp" placeholder="Entrer Mot de passe" >
