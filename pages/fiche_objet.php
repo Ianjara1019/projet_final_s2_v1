@@ -10,7 +10,7 @@ if ($id_object) {
     
     if ($result && mysqli_num_rows($result) > 0) {
         $objet = mysqli_fetch_assoc($result);
-        $images_query = "SELECT * FROM images WHERE id_object = $id_object";
+        $images_query = "SELECT * FROM images_object WHERE id_object = $id_object";
         $images_result = mysqli_query($db, $images_query);
         $images = $images_result ? mysqli_fetch_all($images_result, MYSQLI_ASSOC) : [];
     } else {
