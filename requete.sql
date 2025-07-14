@@ -118,3 +118,20 @@ CREATE or replace view v_liste_objet as
 SELECT co.nom_categorie, o.*, e.date_retour from objet as o JOIN emprunt as e on o.id_object = e.id_object JOIN categorie_object as  co on co.id_categorie = o.id_categorie;
 
 
+CREATE OR REPLACE VIEW v_liste_objet AS
+SELECT 
+    o.id_object,
+    o.nom_object,
+    o.id_categorie,
+    o.id_membre,
+    co.nom_categorie,
+    MAX(e.date_retour) AS date_retour,
+    (SELECT nom_image FROM images_object WHERE id_object = o.id_object LIMIT 1) AS image_principale
+FROM 
+    objet o
+JOIN 
+    categorie_object co ON co.id_categorie = o.id_categorie
+LEFT JOIN 
+    emprunt e ON o.id_object = e.id_object
+GROUP BY 
+    o.id_object;

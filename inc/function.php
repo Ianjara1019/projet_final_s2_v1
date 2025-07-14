@@ -1,47 +1,37 @@
 <?php
 function dbconnect() {
-    static $connect = null;
-    if ($connect === null) {
-        $connect = mysqli_connect('localhost', 'root', '', 'objet');
-        if (!$connect) {
-            die("Erreur de connexion à la base de données : " . mysqli_connect_error());
-        }
+    $connect = mysqli_connect('localhost', 'root', '', 'objet');
+    if (!$connect) {
+        die("Erreur de connexion : " . mysqli_connect_error());
     }
+    mysqli_set_charset($connect, 'utf8');
     return $connect;
 }
- 
+
 function insert($nom, $email, $mdp, $naissance, $genre, $ville) {
     $conn = dbconnect();
-    $sql = "INSERT INTO membre (nom, email, mdp, date_naissance, genre, ville) VALUES ('$nom', '$email', '$mdp', '$naissance', '$genre', '$ville' )";
+    $sql = "INSERT INTO membre (nom, email, mdp, date_naissance, genre, ville) 
+            VALUES ('$nom', '$email', '$mdp', '$naissance', '$genre', '$ville')";
     
-    if (mysqli_query($conn, $sql)) {
-        return true;
-    } else {
-        echo "Erreur d'insertion : " . mysqli_error($conn);
-        return false;
-    }
+    return mysqli_query($conn, $sql);
 }
 
-function liste_objet(){
-    return $sql = mysqli_query(dbconnect(),"SELECT * from v_liste_objet"); 
+function liste_objet() {
+    return mysqli_query(dbconnect(), "SELECT * FROM v_liste_objet");
 }
 
-function filtre_categorie($id_categorie){
-    return $sql = mysqli_query(dbconnect(),"SELECT * from v_liste_objet where id_categorie = $id_categorie ");
-}
-
-function getIDUser($user) {
-    $conn = dbconnect();
-    $requete_query = mysqli_query($conn, "SELECT id_membre FROM membre WHERE nom = '$user'");
-    $result = mysqli_fetch_assoc($requete_query);
-
-    return $result['id_membre'];
+function filtre_categorie($id_categorie) {
+    $id_categorie = intval($id_categorie);
+    return mysqli_query(dbconnect(), "SELECT * FROM v_liste_objet WHERE id_categorie = $id_categorie");
 }
 
 function insertimage($id_object, $newName) {
-    $requete = "INSERT INTO  images_object(id_object, nom_image) values ('$id_object', '$newName')";
-
-    return mysqli_query(dbconnect(), $requete);
+    $conn = dbconnect();
+    return mysqli_query($conn, "INSERT INTO images_object (id_object, nom_image) VALUES ($id_object, '$newName')");
 }
 
+function get_first_image($id_object) {
+    $id_object = intval($id_object);
+    return mysqli_query(dbconnect(), "SELECT nom_image FROM images_object WHERE id_object = $id_object LIMIT 1");
+}
 ?>

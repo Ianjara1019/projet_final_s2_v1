@@ -51,7 +51,6 @@
                 </div>
             </div>
         </nav>
-        <!-- Dropdown for categories -->
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Toutes catégories
@@ -77,7 +76,14 @@
                 <div class="card h-100">
                 <!-- <img src="<?php echo ($objet['image_url']); ?>" class="card-img-top" alt="<?php echo ($objet['nom_objet']); ?>"> -->
                 <div class="card-body">
-                    <h5 class="card-title"><?php echo ($objet['nom_object']); ?></h5>
+                    <h5 class="card-title">
+                        <a href="fiche_objet.php?id_object=<?php echo $objet['id_object'] ?>">
+                            <?php echo ($objet['nom_object']) ?>
+                        </a>
+                    </h5>
+                    <p class="card-text <?= $objet['date_retour'] ? 'text-danger' : 'text-success' ?>">
+                        <?= $disponible ?>
+                    </p>
                 </div>
                 <div class="card-footer">
                     <?php if($objet['date_retour'] != null) {?>
@@ -85,7 +91,7 @@
                     <?php } else {?>
                         <p><strong>Disponible</strong></p>    
                     <?php }?>
-                    <a href="upload.php?id_object=<?php echo $cat['id_object']?>">Ajouter image</a>
+                    <a href="upload.php?id_object=<?php echo $objet['id_object']?>">Ajouter image</a>
                 </div>
                 </div>
             </div>
