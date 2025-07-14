@@ -48,7 +48,7 @@ $categorie = mysqli_query($db, "SELECT * FROM categorie_object");
             <?php while ($objet = mysqli_fetch_assoc($lo)): ?>
                 <?php 
                 $image = mysqli_fetch_assoc(get_first_image($objet['id_object']));
-                $disponible = $objet['date_retour'] ? 'Non disponible' : 'Disponible';
+                $disponible = $objet['date_retour'] ? 'Disponible le ' . date('d/m/Y', strtotime($objet['date_retour'])) : 'Disponible';
                 ?>
                 <div class="col">
                     <div class="card h-100 shadow-sm">
@@ -72,6 +72,9 @@ $categorie = mysqli_query($db, "SELECT * FROM categorie_object");
                         <div class="card-footer bg-white">
                             <a href="upload.php?id_object=<?php echo $objet['id_object'] ?>" class="btn btn-sm btn-outline-primary">
                                 Ajouter image
+                            </a>
+                            <a href="emprunt.php?id_object=<?php echo $objet['id_object'] ?>" class="btn btn-sm btn-outline-primary">
+                                Emprunter
                             </a>
                         </div>
                     </div>

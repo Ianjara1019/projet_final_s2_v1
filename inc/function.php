@@ -34,4 +34,13 @@ function get_first_image($id_object) {
     $id_object = intval($id_object);
     return mysqli_query(dbconnect(), "SELECT nom_image FROM images_object WHERE id_object = $id_object LIMIT 1");
 }
+
+function insert_emprunt($id_user, $id_object,$date_emprunt, $date_retour) {
+    return mysqli_query(dbconnect(),
+    "UPDATE emprunt SET 
+        id_membre = $id_user
+        date_emprunt = '$date_emprunt',
+        date_retour = '$date_retour'
+    WHERE id_object = $id_object");
+}
 ?>
