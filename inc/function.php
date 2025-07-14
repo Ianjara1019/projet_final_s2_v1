@@ -2,7 +2,7 @@
 function dbconnect() {
     static $connect = null;
     if ($connect === null) {
-        $connect = mysqli_connect('localhost', '172.60.0.11', 'MdrYaEQX', 'db_s2_ETU004011');
+        $connect = mysqli_connect('172.60.0.11','ETU004011', 'MdrYaEQX', 'db_s2_ETU004011');
         if (!$connect) {
             die("Erreur de connexion à la base de données : " . mysqli_connect_error());
         }
